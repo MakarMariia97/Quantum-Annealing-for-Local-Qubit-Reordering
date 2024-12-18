@@ -45,12 +45,18 @@ def check_sat(s,nvars,ngates,nrows,ncols,x, sim):
 
 sim = False # simulation mode, if True
 
+#circuit 1 (described in our paper Plan A)
+#gates=[[0,2],[1,3],[3,4],[1,4],[0,3],[0,2]]
+#dep_graph={2:[1], 3:[1,2], 4:[0,1], 5:[0,4]} # 2nd gate depends on the 1st gate ...
+# nvars = 5
+
 # Toffoli gate
 gates=[[2,0],[1,0],[2,1],[1,0],[2,1]]
 dep_graph={2:[1], 3:[2], 4:[3]} # gate dependecies meaning that the 2nd gate in 'gates' list depends on the 1st one (starting with 0 index), etc.
+nvars = 3
 
 ngates_all = len(gates)
-nvars = 3
+
 
 # grid
 nrows=2
