@@ -11,14 +11,17 @@ def annealer(Q,cnf,sim,k):
         sampler = EmbeddingComposite(dwavesampler)
     else:
         sampler = neal.SimulatedAnnealingSampler()
-
-    response = sampler.sample_qubo(Q, num_reads=k, chain_strength = 10) 
-    sol = list(response.first.sample.values())
-
-    # check solution for validity
-    solution11 = cnf.convert_solution(sol)
-    ifsat=cnf.is_solution_valid(solution11)
-    
+        
+    ifsat = False
+    N=10 # repeat sampling several times (because of the probabilistic nature of annealing)
+    indN=0
+    while (not ifsat) and indN<N:
+        response = sampler.sample_qubo(Q, num_reads=k, chain_strength = 10) 
+        sol = list(response.first.sample.values())
+        # check solution for validity
+        solution11 = cnf.convert_solution(sol)
+        ifsat=cnf.is_solution_valid(solution11)
+        indN+=1
     return ifsat, solution11
 
 # function to 'connect' qubit placements for subcircuits the circuit is divided into
