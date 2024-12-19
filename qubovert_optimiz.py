@@ -46,8 +46,8 @@ def check_sat(s,nvars,ngates,nrows,ncols,x, sim):
 sim = False # simulation mode, if True
 
 # CNOT-based circuit
-#gates=[[0,2],[1,3],[3,4],[1,4],[0,3],[0,2]]
-#dep_graph={2:[1], 3:[1,2], 4:[0,1], 5:[0,4]}
+# gates=[[0,2],[1,3],[3,4],[1,4],[0,3],[0,2]]
+# dep_graph={2:[1], 4:[2]}  # gate dependecies meaning that the 2nd gate in 'gates' list depends on the 1st one (starting with 0 index), etc.
 # nvars = 5
 
 # double Toffoli gate
@@ -60,14 +60,14 @@ sim = False # simulation mode, if True
 # dep_graph = {1:[0], 2:[0], 3:[2], 4:[3], 5:[1,4], 6:[5]}
 # nvars = 3
 
-# decod24
+# 2-4 decoder
 # gates=[[2,1],[3,1],[3,0],[0,2],[2,1],[1,2],[2,0],[1,3]]
 # dep_graph={3:[0,2], 4:[3], 5:[4], 6:[5], 7:[1,2,4]}
 # nvars = 4
  
 # Toffoli gate
 gates=[[2,0],[1,0],[2,1],[1,0],[2,1]]
-dep_graph={2:[1], 3:[2], 4:[3]} # gate dependecies meaning that the 2nd gate in 'gates' list depends on the 1st one (starting with 0 index), etc.
+dep_graph={2:[1], 3:[2], 4:[3]}
 nvars = 3
 
 ngates_all = len(gates)
