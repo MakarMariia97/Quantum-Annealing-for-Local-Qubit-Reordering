@@ -45,11 +45,26 @@ def check_sat(s,nvars,ngates,nrows,ncols,x, sim):
 
 sim = False # simulation mode, if True
 
-#circuit 1 (described in our paper Plan A)
+# CNOT-based circuit
 #gates=[[0,2],[1,3],[3,4],[1,4],[0,3],[0,2]]
-#dep_graph={2:[1], 3:[1,2], 4:[0,1], 5:[0,4]} # 2nd gate depends on the 1st gate ...
+#dep_graph={2:[1], 3:[1,2], 4:[0,1], 5:[0,4]}
 # nvars = 5
 
+# double Toffoli gate
+# gates = [[2,1],[1,0],[3,0],[1,0],[3,0],[1,3],[2,1]]
+# dep_graph = {1:[0], 2:[1], 3:[2], 4:[3], 5:[0], 6:[3,5]}
+# nvars = 4
+
+# Fredkin gate
+# gates = [[2,1],[0,2],[1,2],[0,1],[1,2],[2,1],[0,1]]
+# dep_graph = {1:[0], 2:[0], 3:[2], 4:[3], 5:[1,4], 6:[5]}
+# nvars = 3
+
+# decod24
+# gates=[[2,1],[3,1],[3,0],[0,2],[2,1],[1,2],[2,0],[1,3]]
+# dep_graph={3:[0,2], 4:[3], 5:[4], 6:[5], 7:[1,2,4]}
+# nvars = 4
+ 
 # Toffoli gate
 gates=[[2,0],[1,0],[2,1],[1,0],[2,1]]
 dep_graph={2:[1], 3:[2], 4:[3]} # gate dependecies meaning that the 2nd gate in 'gates' list depends on the 1st one (starting with 0 index), etc.
