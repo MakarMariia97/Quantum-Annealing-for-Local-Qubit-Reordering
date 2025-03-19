@@ -4,7 +4,7 @@ import itertools
 from qubovert.sat import OR, NOT
 from qubovert import PCBO
 import numpy as np
-from utils_qubovert import manhattan, astar_search, annealer
+from utils import manhattan, astar_search, annealer
 
 # function to consruct boolean function in CNF for the circuit
 def check_sat(s,nvars,ngates,nrows,ncols,x, sim):
